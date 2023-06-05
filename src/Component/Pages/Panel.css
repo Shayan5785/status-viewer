@@ -1,0 +1,21 @@
+.PanelContainer{
+    width: 100%;
+    height: 100vh;
+    /* background-color: red; */
+}
+
+.header{
+    background-color: white;
+    color:black;
+    height: 20vh;
+
+    display: flex;
+    align-items: center;
+
+    border-bottom: 1px solid black;
+}
+
+.headerItem{
+    margin-left: 5%;
+}
+
