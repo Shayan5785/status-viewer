@@ -2,3 +2,8 @@
     display: flex;
     justify-content: center;
 }
+
+.prev > img{
+    width: 100%;
+    height: 100%;
+}

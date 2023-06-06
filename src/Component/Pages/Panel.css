@@ -1,8 +1,13 @@
 .PanelContainer{
     width: 100%;
     height: 100vh;
-    /* background-color: red; */
+    overflow-y:auto
+
 }
+
+.PanelContainer::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 
 .header{
     background-color: white;
@@ -19,3 +24,46 @@
     margin-left: 5%;
 }
 
+.CardContainer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+}
+
+.card{
+    background-color: #efefef;
+    width: 30%;
+    height: 50vh;
+    margin: 5%;
+    border: 1px solid black;
+    border-bottom-left-radius:3px ;
+    border-bottom-right-radius: 3px;
+}
+
+.prev{
+    height: 80%;
+    background-color: white;
+}
+
+.cta{
+    height: 20%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 15px;
+    text-align: center;
+    background-color: #efefef;
+}
+
+.a{
+    cursor: pointer;
+}
+
+.a:hover{
+    opacity: 65%;
+}
+
+.red{
+    color: red;
+}
