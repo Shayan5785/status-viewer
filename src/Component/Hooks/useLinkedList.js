@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 
+
 const useLinkedList = () => {
     class Node {
       constructor(data) {
@@ -10,13 +11,16 @@ const useLinkedList = () => {
   
     const [head, setHead] = useState(null);
     const [tail, setTail] = useState(null);
+    const [current,setCurrent] = useState(null)
     const [length, setLength] = useState(0);
-  
+
+
     const append = (data) => {
       const newNode = new Node(data);
       if (!head) {
         setHead(newNode);
         setTail(newNode);
+        setCurrent(newNode)
       } else {
         tail.next = newNode;
         setTail(newNode);
@@ -31,21 +35,22 @@ const useLinkedList = () => {
       }
   
       if (!head.next) {
-        // Only one node in the list
-        setHead(null);
-        setLength(0);
+        alert('Only Node')
         return;
       }
+
+      if(current == tail) setCurrent(head)
   
-      let current = head;
+      let currentDel = head;
       let previous = null;
   
-      while (current.next) {
-        previous = current;
-        current = current.next;
+      while (currentDel.next) {
+        previous = currentDel;
+        currentDel = currentDel.next;
       }
   
       previous.next = null;
+      setTail(previous)
       setLength(prevLength => prevLength - 1);
   }
 
@@ -59,8 +64,14 @@ const useLinkedList = () => {
       str += "NULL"
       console.log(str)
     }
-  
-    // Other linked list operations (e.g., delete, insert, etc.)
+
+    const printSingle = () => {
+      if(current == tail)  {
+        alert("Last Node")
+        return
+      }
+      setCurrent(prev => prev.next)
+    }
   
     return {
       head,
@@ -69,7 +80,8 @@ const useLinkedList = () => {
       append,
       print,
       deletes,
-      // Other linked list operations
+      printSingle,
+      current,
     };
   };
 
