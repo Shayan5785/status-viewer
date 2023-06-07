@@ -9,13 +9,13 @@ import fifth from '../../assets/fifth.jpg'
 import sixth from '../../assets/sixth.jpg'
 
 function Cards( {initial} ) {
+
+    let {head, length, append, deletes, print,currentNext, current} = useLinkedList()
     
-    const [image, setImage] = useState(initial)
-    
-    let {head, length, append, deletes, print,printSingle, current} = useLinkedList()
-    
+    // initialized the first node
     if(!head) append(initial)
     
+    // switch case counter
     const [img, setImg] = useState(0)
 
     const handleAppend = async () => {
@@ -56,30 +56,16 @@ function Cards( {initial} ) {
         // const img = data.urls.regular
         // append(img)
     };
-
-    const handleCurrent = () => {
-        printSingle()
-    }
-    // console.log(head)
-    // console.log("current --> ", current)
   
-    const handleDeletes = () => {
-      deletes()
-    }
-  
-    const handlePrint = () => {
-      print()
-    };
-
   return (
     <div className="card">
         <div className="prev">
-            <img onClick={handlePrint} src={!current ? image : current.data} alt="" />
+            <img onClick={print} src={!current ? initial : current.data} alt="" />
         </div>
         <div className='cta'>
             <CTA onClick={handleAppend} val={"Append"} className={'blue'}/>
-            <CTA onClick={handleDeletes} val={"Delete Last Node"} className={'red'} />
-            <CTA onClick={handleCurrent} val={"Next Node"}  className={'blue'}/>
+            <CTA onClick={deletes} val={"Delete"} className={'red'} />
+            <CTA onClick={currentNext} val={"Next"}  className={'blue'}/>
             { length }
         </div>
     </div>
